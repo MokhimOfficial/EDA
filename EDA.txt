@@ -1,0 +1,317 @@
+1. Write a Program in Python to Read and write different types of Files(json,/txt). Ans: 
+To Read json File: 
+Steps: 1. Import required libraries - import pandas as pd 
+2. Create a variable to read the files - 
+Data = pd.read_json(‘ab.json’) 
+Data.head() 
+To Read text/txt File: 
+Steps: 1. Import required libraries - import pandas as pd 
+import os 
+2. Create a variable to write the file path - 
+file_path = "Ab_1.txt" 
+2. Create a variable to read the file path with tab delimiter in given data using CSV extension - data = pd.read_csv(file_path, delimiter = "\t") Data.head() 
+2. Write a Program in Python to Read and write the CSV Files. Ans: 
+To Read CSV File: 
+Steps: 1. Import required libraries - import pandas as pd 
+2. Create a variable to read the files - 
+Data = pd.read_csv(‘ab.csv’)
+Data.head() 
+To Read Excel File: 
+Set B: 
+1. Write a Program in Python to Read and write the Excel Files. Ans: 
+To Read Excel File: 
+Steps: 1. Import required libraries - import pandas as pd 
+2. Create a variable to read the files - 
+Data = pd.read_xlsx(‘ab.xlsx’) 
+Data.head() 
+To Read Excel File: 
+2. Python program to import libraries for loading & read a dataset. (Use head(), tail(), shape,  info() , describe() ,columns) 
+Ans: Perform these all operations on data files like CSV, Excel. 
+Steps: 1. Import required libraries - import pandas as pd 
+import numpy as np 
+2. Create a variable to read the files - 
+Data = pd.read_csv(‘ab.csv’) 
+3. Retrieve first 5 records using “head()” - Data.head() 
+4. Retrieve last 5 records using “tail()” - Data.tail() 
+5. To find the how many no. of rows and columns are present in file use “shape method”- Data.shape 
+6. To get understanding of data presenting in file use “info()” - Data.info() 
+7. To get understanding of statistical data use “describe()” - 
+Data.describe()
+8. To know about all the column name present in file use “columns” - Data.columns() 
+9. To understanding how many missing values are present in data use - Data.isnull().sum()
+Practical 2
+Slips: 
+1. Python program to import libraries for loading & read a dataset. (Use head(),  tail(), shape, info() , describe() ,columns) . 
+Program: 
+import pandas as pd  
+data=pd.read_excel('Desktop/Employee.xlsx')  
+print("First few rows:") 
+print(data.head()) 
+print("Last few rows:") 
+print(data.tail()) 
+print("Shape of the dataset:")  
+print(data.shape) 
+print("Dataset information:")  
+print(data.info()) 
+print("Descriptive statistics:")  
+print(data.describe()) 
+print("Column names:")  
+print(data.columns)
+2. Implementation of data cleaning –finding missing data ,removing and filling  missing data. 
+1.find the missing values using isnull() function. 
+dataFrame.isnull( ) 
+dataFrame.isnull( ).any( ) 
+2. Removing Missing Values using dropna() function. 
+dataFrame.dropna( ) 
+3. Replacing with a value using fillna() function.  
+Program: 
+import pandas as pd  
+data=pd.read_excel('Desktop/Employee.xlsx')  
+data.isnull().sum() 
+data.isnull() 
+data.dropna(axis=0) # ignore the tuples 
+fill=data['mobile no'].fillna('9655551145') # fill missing values randomly  print(fill)
+3. Write a python program implement data wrangling operations- filtering and removing duplication of data. 
+import pandas as pd  
+data=pd.read_excel('Desktop/Employee.xlsx')  
+data.dropna(axis=0) # ignore the tuples 
+df.drop_duplicates() #remove duplicates  
+print('remove duplicates') 
+print(df) 
+df = df[df['salary'] >= 1000000].copy()# Filter top salary employees  print(' Employees whose salary is more than 1lakh') 
+print(df) 
+4. Python program to Implement data transformation -Combine data  frames/datasets using join() ,merge() ,concat() etc. 
+Program : 
+import pandas as pd  
+data1 = {'ID': [1, 2, 3, 4], 
+'Name': ['John', 'Alice', 'Bob', 'Charlie'],  
+'Age': [25, 30, 28, 35]} 
+data2 = {'ID': [2, 3, 4, 5], 
+'City': ['New York', 'London', 'Paris', 'Tokyo'], 
+'Country': ['USA', 'UK', 'France', 'Japan']}  
+df1 = pd.DataFrame(data1)
+df2 = pd.DataFrame(data2) 
+joined_data = df1.join(df2.set_index('ID'), on='ID')  
+merged_data = pd.merge(df1, df2, on='ID', how='inner')  
+concatenated_data = pd.concat([df1, df2], axis=1) 
+print("Joined Data:")  
+print(joined_data)  
+print("\nMerged Data:")  
+print(merged_data)  
+print("\nConcatenated Data:")  
+print(concatenated_data) 
+5. Python program to implement data transformation - grouping data using group  by. 
+Program: 
+import pandas as pd 
+df=pd.read_excel('Desktop/Employee.xlsx')  
+grouped=df.groupby(['year'])  
+grouped.get_group(2010) 
+6. Write a python program to reshaping data- Convert categorical data into  numerical value using dataset. 
+Program: 
+import pandas as pd  
+import numpy as np 
+data=pd.read_excel('Desktop/Employee.xlsx')  
+data.dropna(axis=0) 
+data['grade'].replace(['A++','A+','A','B','C'],[5,4,3,2,0],inplace=True)  # data['gender'].replace({'m':0,'f':1}, inplace=True) 
+data
+Practical 3
+1. Write a python program for analysis of data through Scatter plot. Program: 
+import pandas as pd 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+data = pd.read_csv("iris") 
+sns.scatterplot(x='sepal_length', y='sepal_width', data=data)
+ plt.show() 
+2. Write a python program to represent data using Bar plot. # importing packages 
+import pandas as pd 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+data = pd.read_csv("iris") 
+sns.barplot(x='species', y='sepal_length', data=data) 
+plt.show() 
+3. Write a python program to represent data using Box plot. # importing packages 
+import pandas as pd 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+data = pd.read_csv("iris") 
+sns.boxplot(x='species', y='sepal_length', data=data) 
+plt.show() 
+4. Write a python program to represent data using Histogram plot. # importing packages 
+import pandas as pd 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+data = pd.read_csv("iris") 
+sns.histplot(x='sepal_length', data=data) 
+plt.show() 
+5. Write a python program to represent data using Line plot. # importing packages 
+import pandas as pd
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+data = pd.read_csv("iris") 
+sns.lineplot(x='sepal_length',y="sepal_width", data=data) 
+plt.show() 
+6. Write a python program to represent data using Pair plot. # importing packages 
+import pandas as pd 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+data = pd.read_csv("iris") 
+sns.pairplot(hue="species", data=data, kind="kde")
+ plt.show()
+Practical 4
+1. Write a python program to implement graphical Univariate analysis using histogram.
+Program:
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+Link='https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv'
+df=pd.read_csv(Link)
+df.head()
+sns.histplot(df, x='sepal_length')
+plt.show()
+2. Write a python program to implement graphical Bivariate analysis using scatterplot.
+Program:
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+Link='https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv'
+df=pd.read_csv(Link)
+df.head()
+sns.boxplot(x='petal_length',y='sepal_width',data=df)
+sns.scatterplot(x='sepal_length',y='sepal_width',data=df)
+plt.show()
+3. Write a python program to implement Graphical Multivariate analysis using pair plot.
+Program:
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+Link='https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv'
+df=pd.read_csv(Link)
+df.head()
+sns.pairplot(df,hue="species",height=3)
+plt.show()
+
+4. Write a python program to implement cross tabulation using crosstab( ) function. Using Employee dataset.
+Program:
+import pandas as pd
+import numpy as np
+df=pd.read_excel('Desktop/Employee.xlsx')
+pd.crosstab(index=df['salary'],columns=df['position'])
+pd.crosstab(df['position'],df['grade'])
+5. Write a python program to implement correlation matrix and plotting a correlation graph using dataset.
+Program:
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+Link='https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv'
+df=pd.read_csv(Link)
+df.head()
+cor_mat=df.corr()
+sns.heatmap(cor_mat, cmap='RdBu', annot=True)
+plt.show()
+6. Python program to compute weighted average in Python using Numpy.
+Program:
+import numpy as np
+values = np.array([4, 3.5, 2.8])
+weights = np.array([0.2, 0.3, 0.5])
+weighted_average = np.average(values, weights=weights)
+print("Weighted Average:", weighted_average)
+7. Implementation of measures of Central tendency (mean, median and mode) using numpy ,scipy.
+Program:
+import numpy
+from scipy import stats
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+mean = numpy.mean(speed)
+print("mean=",mean)
+median = numpy.median(speed)
+print("median=",median)
+mode=stats.mode(speed)
+print(mode)
+8. Implementation of measures of Dispersion (range,standard deviation, variance) using numpy .
+Program:
+import numpy
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+max=numpy.max(speed)
+min=numpy.min(speed)
+range=max-min
+std= numpy.std(speed)
+var=numpy.var(speed)
+print("maximum value",max)
+print("minimum value", min)
+print("range of data",range)
+print("range=",range)
+print("standard deviation=",std)
+print("variance=",var)
+Practical 5
+1. Write a python program to perform ANOVA Test.
+Program:
+import scipy.stats as stats
+group1= [14, 15,16, 14,15, 15, 16,16, 18, 17]
+group2= [12, 13,14, 13,15, 12, 11,14, 13, 15]
+group3= [10, 9, 11, 12, 8, 10, 11, 12, 10, 11]
+f_statistic,p_value=stats.f_oneway(group1,group2,group3)
+print(f"F-statistic:{f_statistic}")
+print(f"P-value: {p_value}")
+alpha = 0.05
+if p_value<alpha:
+       print("The null hypothesis is rejected-there is a significant difference between the groups.")
+else:
+       print("The null hypothesis is not rejected –there is no significant difference between the groups.")
+
+
+2. Write a python program to perform a T-test.
+Program:
+import scipy.stats as stats
+group1= [14, 15,16, 14,15, 15, 16,16, 18, 17]
+group2= [12, 13,14, 13,15, 12, 11,14, 13, 15]
+t_statistic,p_value=stats.ttest_ind(group1,group2)
+print(f"T-statistic:{t_statistic}")
+print(f"P-value: {p_value}")
+alpha = 0.05
+if p_value<alpha:
+       print("The null hypothesis is rejected –there is a significant difference between the groups.")
+else:
+       print("The null hypothesis is not rejected-there is no significant difference between the groups.")
+3. Write a python program to perform Logistic Regression.
+Program:
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+X=np.array([[1,2],[2,3],[3,1],[4,3],[5,3],[6,2]])
+y=np.array([0, 0, 0, 1, 1, 1])
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2, random_state=42)
+model=LogisticRegression()
+model.fit(X_train, y_train)
+y_pred=model.predict(X_test)
+accuracy=accuracy_score(y_test,y_pred)
+print(f"Accuracy: {accuracy}"
+4. Write a python program to perform Linear Regression.
+Program:
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+X=np.array([[1,2],[2,3],[3,1],[4,3],[5,3],[6,2]])
+y=np.array([7, 8,9,11,13, 16])
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=42)
+model=LinearRegression()
+model.fit(X_train, y_train)
+y_pred=model.predict(X_test)
+mse = mean_squared_error(y_test,y_pred)
+print(f"Mean Squared Error: {mse}")
+
+5. Write a python program to perform Multiple Regression.
+Program:
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+X=np.array([[1,2,3],[2,3,4],[3,1,5],[4,3,2],[5,3,1],[6,2,4]])
+y=np.array([7, 8,9,11,13, 16])
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=42)
+model= LinearRegression()
+model.fit(X_train, y_train)
+y_pred=model.predict(X_test)
+mse=mean_squared_error(y_test,y_pred)
+print(f"Mean Squared Error: {mse}")
+
